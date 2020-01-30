@@ -27,34 +27,24 @@ struct ContentView: View {
             }
             
             DrawerView(isPresented: $isPresentedDrawerView) {
-                EmojiView(self.selectingEmoji)
+                MenuView(emoji: self.selectingEmoji)
                     .frame(width: 200)
             }
         }
     }
 }
 
-struct EmojiView: View {
-    private let emoji: String
-    
-    init(_ emoji: String) {
-        self.emoji = emoji
-    }
+struct MenuView: View {
+    let emoji: String
     
     var body: some View {
         VStack {
-            Spacer()
             Text(emoji)
-            Spacer()
-        }
-    }
-}
-
-struct MenuView: View {
-    var body: some View {
-        List {
-            ForEach(0..<100) { number in
-                Text("\(number)")
+                .font(Font.largeTitle)
+            List {
+                ForEach(0..<100) { number in
+                    Text("\(number)")
+                }
             }
         }
     }
