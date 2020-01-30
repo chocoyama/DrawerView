@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectingEmoji: String = ""
+    @State private var selectedEmoji: String = ""
     @State private var isPresentedDrawerView: Bool = false
     
     var body: some View {
@@ -17,7 +17,7 @@ struct ContentView: View {
             VStack(spacing: 16) {
                 ForEach(["😄", "😩", "🥺"], id: \.self) { emoji in
                     Button(action: {
-                        self.selectingEmoji = emoji
+                        self.selectedEmoji = emoji
                         self.isPresentedDrawerView = true
                     }) {
                         Text(emoji)
@@ -27,7 +27,7 @@ struct ContentView: View {
             }
             
             DrawerView(isPresented: $isPresentedDrawerView) {
-                MenuView(emoji: self.selectingEmoji)
+                MenuView(emoji: self.selectedEmoji)
                     .frame(width: 200)
             }
         }
